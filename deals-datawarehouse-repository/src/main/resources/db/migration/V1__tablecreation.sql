@@ -1,0 +1,10 @@
+CREATE TABLE DEALS
+(
+    ID                      BIGSERIAL PRIMARY KEY       NOT NULL UNIQUE,
+    DEAL_ID                 BIGSERIAL                   NOT NULL UNIQUE,
+    ORDERING_CURRENCY       VARCHAR(3)                  NOT NULL,
+    DESTINATION_CURRENCY    VARCHAR(3)                  NOT NULL,
+    AMOUNT                  NUMERIC                     NOT NULL,
+    CREATED_AT TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    UPDATED_AT TIMESTAMP WITHOUT TIME ZONE
+);

@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  datawarehouse-db:
+    container_name: datawarehouse-db
+    image: postgres
+    ports:
+      - 5451:5432
+    environment:
+      - POSTGRES_USER=deals-datawarehouse
+      - POSTGRES_PASSWORD=deals-datawarehouse
+      - POSTGRES_DB=deals-datawarehouse
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h localhost -U deals-datawarehouse -d deals-datawarehouse" ]
+      timeout: 10s
+      retries: 3
+#    networks:
+#      - spring-cloud-network
+#  deals-datawarehouse-application:
+#    container_name: deals-datawarehouse-application
+#    build:
+#      context: .
+#    image: deals-datawarehouse-application:latest
+#    depends_on:
+#      datawarehouse-db:
+#        condition: service_healthy
+#    ports:
+#      - 8080:8080
+#    volumes:
+#      - ./:/app
+#    working_dir: /
+#    command: [ "java", "-jar", "app.jar" ]
+#    networks:
+#      - spring-cloud-network
+#networks:
+#  spring-cloud-network:
+#    driver: bridge

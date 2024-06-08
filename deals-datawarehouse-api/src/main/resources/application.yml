@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: local
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  config:
+    import: "optional:configserver:http://localhost:8888"
+
+server:
+  port: 8080
+  servlet:
+    context-path: /deals-datawarehouse
+health:
+  config:
+    enabled: false
+#logging:
+#  level:
+#    root: DEBUG
